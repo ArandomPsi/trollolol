@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhcllifjqeots"]
+
+[ext_resource type="Texture2D" uid="uid://bxksg1mr1pu3w" path="res://assets/ver1.svg" id="1_p3fx7"]
+[ext_resource type="Script" uid="uid://cpsoxu1hn3lpq" path="res://scenesandscripts/verity.gd" id="1_yby8i"]
+[ext_resource type="Texture2D" uid="uid://bj02wj8q6dtpq" path="res://assets/ver2.svg" id="2_okals"]
+[ext_resource type="FontFile" uid="uid://bgtddbwdprq2c" path="res://externaluploads/KineksRoundBold-MAlrP.otf" id="4_a8fua"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yby8i"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8fua"]
+radius = 176.23
+
+[node name="verity" type="Node2D"]
+script = ExtResource("1_yby8i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_p3fx7")
+
+[node name="eyes" type="Node2D" parent="."]
+position = Vector2(0, -11)
+
+[node name="eyes" type="Sprite2D" parent="eyes"]
+position = Vector2(14, 0)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_okals")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -176.0
+offset_top = -225.0
+offset_right = 176.0
+offset_bottom = -55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yby8i")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = -16.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_a8fua")
+theme_override_font_sizes/font_size = 30
+text = "Hey its me, its verity"
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_a8fua")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

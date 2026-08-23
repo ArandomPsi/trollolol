@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://gyc1nvc72auj"]
+
+[ext_resource type="Script" uid="uid://b54d5bjptglpa" path="res://scenesandscripts/troll_1.gd" id="1_dmn50"]
+[ext_resource type="Texture2D" uid="uid://wxtmycw7onh2" path="res://assets/prototypetiles.png" id="2_ak4vw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmn50"]
+size = Vector2(233, 96)
+
+[node name="troll1" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_dmn50")
+
+[node name="spike" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="spike"]
+texture_filter = 1
+texture = ExtResource("2_ak4vw")
+region_enabled = true
+region_rect = Rect2(32, 32, 96, 96)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="spike"]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spike/StaticBody2D"]
+shape = SubResource("RectangleShape2D_dmn50")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
