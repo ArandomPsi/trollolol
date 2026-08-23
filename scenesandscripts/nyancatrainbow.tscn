@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://congfvbp7vbpn"]
+
+[ext_resource type="Texture2D" uid="uid://sodjo4jv8imr" path="res://assets/nyancat.svg" id="1_ede86"]
+[ext_resource type="Script" uid="uid://sqiu0l34m2ki" path="res://scenesandscripts/nyancatrainbow.gd" id="1_xx0lt"]
+[ext_resource type="Texture2D" uid="uid://coql81t2k2kxj" path="res://assets/gaycatpoop.png" id="2_o67ui"]
+
+[sub_resource type="Gradient" id="Gradient_o67ui"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[node name="nyancatrainbow" type="Node2D"]
+script = ExtResource("1_xx0lt")
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_filter = 1
+width = 40.0
+gradient = SubResource("Gradient_o67ui")
+texture = ExtResource("2_o67ui")
+texture_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ede86")
