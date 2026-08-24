@@ -8,6 +8,11 @@ var lastonfloor : bool = false
 var camtweenzoom : float = 1
 var camtweenpos : Vector2
 
+@export var respawnpos : Vector2
+
+func _ready() -> void:
+	respawnpos = position
+
 func _physics_process(delta: float) -> void:
 	
 	controls()
@@ -19,7 +24,8 @@ func _physics_process(delta: float) -> void:
 	
 	anims()
 	
-	move_and_slide()
+	if $sprite.visible:
+		move_and_slide()
 	
 	if not lastonfloor == is_on_floor() and is_on_floor():
 		$sprite.scale.y = 0.2
@@ -90,4 +96,19 @@ func _on_camareadetect_area_entered(area: Area2D) -> void:
 
 
 func _on_spikedetector_body_entered(body: Node2D) -> void:
-	queue_free()
+	die()
+
+func die():
+	diestayinpos()
+	$spikedetector/CollisionShape2D.disabled = true
+	$diepar.emitting = true
+	$sprite.visible = false
+	await get_tree().create_timer(1.4).timeout
+	$spikedetector/CollisionShape2D.disabled = false
+	$sprite.visible = true
+	
+	position = respawnpos
+
+
+func diestayinpos():
+	velocity = Vector2(0,0)
