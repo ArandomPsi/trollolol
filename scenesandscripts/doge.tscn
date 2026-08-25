@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cphv2e74n2u6p"]
+
+[ext_resource type="Texture2D" uid="uid://ccp744u0nt5w5" path="res://assets/horribledoge.svg" id="1_f8sjn"]
+
+[node name="doge" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_f8sjn")

@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var text : String = "Gurney"
+@export_multiline var text : String = "Gurney"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Panel.visible = false

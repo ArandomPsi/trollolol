@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg3vn44l5j750"]
+
+[ext_resource type="Texture2D" uid="uid://c4rnmx6j1u3of" path="res://assets/pixelglasses.svg" id="1_5hxvq"]
+
+[node name="pixelglasses" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5hxvq")

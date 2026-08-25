@@ -100,7 +100,7 @@ func _on_spikedetector_body_entered(body: Node2D) -> void:
 
 func die():
 	diestayinpos()
-	$spikedetector/CollisionShape2D.disabled = true
+	$spikedetector/CollisionShape2D.set_deferred("disabled", true)
 	$diepar.emitting = true
 	$sprite.visible = false
 	await get_tree().create_timer(1.4).timeout
