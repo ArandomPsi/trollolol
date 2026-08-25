@@ -254,7 +254,7 @@ text = "hello, my name is gary. i'm here to help"
 
 [node name="verity9" parent="verities" instance=ExtResource("5_dhh1a")]
 position = Vector2(348, 391)
-text = "press space to jump"
+text = "press space to kill yourself"
 
 [node name="verity2" parent="verities" instance=ExtResource("5_dhh1a")]
 position = Vector2(1154, 389)
@@ -262,11 +262,11 @@ text = "just jump up there. Its lowk too ez"
 
 [node name="verity3" parent="verities" instance=ExtResource("5_dhh1a")]
 position = Vector2(2015, 234)
-text = "spikes kill you. just jump over them"
+text = "touch red things and you win the game"
 
 [node name="verity4" parent="verities" instance=ExtResource("5_dhh1a")]
 position = Vector2(3598, 227)
-text = "Meet tim, my bestie"
+text = "tim doesn't bite"
 
 [node name="verity5" parent="verities" instance=ExtResource("5_dhh1a")]
 position = Vector2(744, 604)
