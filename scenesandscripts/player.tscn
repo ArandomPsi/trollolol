@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://buatg5jkhgbgr"]
+[gd_scene load_steps=33 format=3 uid="uid://buatg5jkhgbgr"]
 
 [ext_resource type="Script" uid="uid://xxu1hcfdi8l1" path="res://scenesandscripts/player.gd" id="1_0swia"]
 [ext_resource type="Texture2D" uid="uid://c2gi0ew3n1k88" path="res://assets/idle-5.svg" id="1_mdya1"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b0oy5c810e1f4" path="res://assets/chibrun3.svg" id="15_r0ve5"]
 [ext_resource type="Texture2D" uid="uid://gxv6306i6r4e" path="res://assets/chibrun7.svg" id="16_0swia"]
 [ext_resource type="Shader" uid="uid://d1x6mrjpwtxhv" path="res://assets/pixel.gdshader" id="17_0swia"]
+[ext_resource type="Shader" uid="uid://ds077ntrocfgq" path="res://scenesandscripts/transition.gdshader" id="17_r0ve5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ucavg"]
 animations = [{
@@ -84,6 +85,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjluy"]
 size = Vector2(22, 33)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a3dm4"]
+shader = ExtResource("17_r0ve5")
+shader_parameter/circle_size = 0.0
+shader_parameter/screen_width = 1152.0
+shader_parameter/screen_height = 648.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r0ve5"]
 shader = ExtResource("17_0swia")
 shader_parameter/exposure = 1.0
@@ -128,7 +135,43 @@ gravity = Vector3(0, 1000, 0)
 scale_min = 5.0
 scale_max = 10.0
 scale_curve = SubResource("CurveTexture_r0ve5")
-color = Color(1, 0.26, 0.26, 1)
+color = Color(1, 0.909804, 0.235294, 1)
+
+[sub_resource type="Gradient" id="Gradient_r0ve5"]
+offsets = PackedFloat32Array(0.683784, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a3dm4"]
+gradient = SubResource("Gradient_r0ve5")
+
+[sub_resource type="Curve" id="Curve_r0ve5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_a3dm4"]
+curve = SubResource("Curve_r0ve5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vvjyh"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 200.0
+emission_ring_inner_radius = 200.0
+emission_ring_cone_angle = 90.0
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, -1, 0)
+angular_velocity_min = -5.00002
+angular_velocity_max = 4.99998
+radial_velocity_min = -471.8
+radial_velocity_max = -225.64
+gravity = Vector3(0, 0, 0)
+scale_min = 30.0
+scale_max = 30.0
+scale_curve = SubResource("CurveTexture_a3dm4")
+color = Color(1, 0.909804, 0.235294, 1)
+color_ramp = SubResource("GradientTexture1D_a3dm4")
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
@@ -149,7 +192,16 @@ shape = SubResource("RectangleShape2D_jjluy")
 
 [node name="hud" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="hud"]
+[node name="transition" type="ColorRect" parent="hud"]
+material = SubResource("ShaderMaterial_a3dm4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="postprocessing" type="ColorRect" parent="hud"]
 material = SubResource("ShaderMaterial_r0ve5")
 anchors_preset = 15
 anchor_right = 1.0
@@ -184,6 +236,15 @@ lifetime = 0.7
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_a3dm4")
+
+[node name="spawnpar" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 18
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_vvjyh")
 
 [connection signal="area_entered" from="camareadetect" to="." method="_on_camareadetect_area_entered"]
 [connection signal="body_entered" from="spikedetector" to="." method="_on_spikedetector_body_entered"]

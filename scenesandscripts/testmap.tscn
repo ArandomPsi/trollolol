@@ -287,8 +287,8 @@ position = Vector2(5959, -160)
 text = "these invisible blocks are too ez"
 
 [node name="verity8" parent="verities" instance=ExtResource("5_dhh1a")]
-position = Vector2(8234, -180)
-text = "well well well"
+position = Vector2(8909, -159)
+text = "these things kill you"
 
 [node name="player" parent="." instance=ExtResource("2_u4p16")]
 position = Vector2(-853, 415)

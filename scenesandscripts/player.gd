@@ -11,7 +11,17 @@ var camtweenpos : Vector2
 @export var respawnpos : Vector2
 
 func _ready() -> void:
+	$sprite.visible = false
+	position = global.playerrespawnpos
 	respawnpos = position
+	$spawnpar.emitting = true
+	
+	var tween = create_tween()
+	tween.tween_method(settransshaderprop,0.0,1.05,0.4).set_trans(Tween.TRANS_CUBIC)
+	await $spawnpar.finished
+	$sprite.visible = true
+	$diepar.emitting = true
+	
 
 func _physics_process(delta: float) -> void:
 	
@@ -26,6 +36,8 @@ func _physics_process(delta: float) -> void:
 	
 	if $sprite.visible:
 		move_and_slide()
+	else:
+		velocity = Vector2(0,0)
 	
 	if not lastonfloor == is_on_floor() and is_on_floor():
 		$sprite.scale.y = 0.2
@@ -104,11 +116,15 @@ func die():
 	$diepar.emitting = true
 	$sprite.visible = false
 	await get_tree().create_timer(1.4).timeout
-	$spikedetector/CollisionShape2D.disabled = false
-	$sprite.visible = true
+	var tween = create_tween()
+	tween.tween_method(settransshaderprop,1.05,0.0,0.4).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_interval(0.6)
+	await tween.finished
 	
-	position = respawnpos
+	get_tree().reload_current_scene()
 
+func settransshaderprop(val:float):
+	$hud/transition.material.set_shader_parameter("circle_size",val)
 
 func diestayinpos():
 	velocity = Vector2(0,0)
