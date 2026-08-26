@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	lastonfloor = is_on_floor()
 	
 	if not $camareadetect.has_overlapping_areas():
-		$Camera2D.limit_left = -10000000
+		$Camera2D.limit_left = -2000
 		$Camera2D.limit_right = 10000000
 		$Camera2D.limit_top = -10000000
 		$Camera2D.limit_bottom = 550
