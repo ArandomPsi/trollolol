@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1gw5kjvexu7m"]
+
+[ext_resource type="Script" uid="uid://b1bevp3j417gb" path="res://scenesandscripts/grogu.gd" id="1_xm7ji"]
+[ext_resource type="Texture2D" uid="uid://donxthb7okbdv" path="res://assets/grogu.svg" id="2_xm7ji"]
+[ext_resource type="Texture2D" uid="uid://dttfpkr6bajma" path="res://assets/grogu arm.svg" id="3_mriju"]
+[ext_resource type="FontFile" uid="uid://bgtddbwdprq2c" path="res://externaluploads/KineksRoundBold-MAlrP.otf" id="4_qtwhe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yby8i"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8fua"]
+radius = 176.23
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mriju"]
+size = Vector2(200, 387)
+
+[node name="grogu" type="Node2D"]
+script = ExtResource("1_xm7ji")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.295, 0.295)
+texture = ExtResource("2_xm7ji")
+
+[node name="arm" type="Node2D" parent="."]
+position = Vector2(15, -2)
+
+[node name="rightarm" type="Sprite2D" parent="arm"]
+position = Vector2(7, 12)
+scale = Vector2(0.295, 0.295)
+texture = ExtResource("3_mriju")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -176.0
+offset_top = -225.0
+offset_right = 176.0
+offset_bottom = -55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yby8i")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = -16.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_qtwhe")
+theme_override_font_sizes/font_size = 30
+text = "Hey its me, its verity"
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_a8fua")
+
+[node name="platformmovearea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platformmovearea"]
+position = Vector2(336, -28.5)
+shape = SubResource("RectangleShape2D_mriju")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="platformmovearea" to="." method="_on_platformmovearea_body_entered"]
