@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b0oy5c810e1f4" path="res://assets/chibrun3.svg" id="15_r0ve5"]
 [ext_resource type="Texture2D" uid="uid://gxv6306i6r4e" path="res://assets/chibrun7.svg" id="16_0swia"]
 [ext_resource type="Shader" uid="uid://d1x6mrjpwtxhv" path="res://assets/pixel.gdshader" id="17_0swia"]
-[ext_resource type="Shader" path="res://scenesandscripts/transition.gdshader" id="17_r0ve5"]
+[ext_resource type="Shader" uid="uid://ds077ntrocfgq" path="res://scenesandscripts/transition.gdshader" id="17_r0ve5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ucavg"]
 animations = [{
@@ -176,6 +176,7 @@ color_ramp = SubResource("GradientTexture1D_a3dm4")
 [node name="player" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 2
+platform_on_leave = 1
 script = ExtResource("1_0swia")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
