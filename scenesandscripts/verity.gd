@@ -1,6 +1,6 @@
 extends Node2D
 
-@export_multiline var text : String = "Gurney"
+@export_multiline var texts : PackedStringArray
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Panel.visible = false
@@ -17,7 +17,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	$Area2D.queue_free()
 	$Panel.visible = true
 	$Panel.modulate.a = 0.0
-	$Panel/Label.text = text
+	$Panel/Label.text = texts[randi_range(0, texts.size() - 1)]
 	$Panel.position.y += 100
 	var tween = create_tween()
 	tween.tween_property($Panel,"position:y",-225.0,0.5).set_trans(Tween.TRANS_CUBIC)

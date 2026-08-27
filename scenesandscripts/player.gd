@@ -65,6 +65,12 @@ func controls():
 		$sprite.scale.y = 0.6
 		$sprite.scale.x = 0.1
 	
+	if Input.is_action_just_pressed("reset"):
+		set_process(false)
+		global.you_have_been_trolled = true
+		global.playerrespawnpos = Vector2(-1200,-200)
+		die()
+	
 	
 	
 
