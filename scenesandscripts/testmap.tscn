@@ -1,5 +1,6 @@
-[gd_scene load_steps=59 format=4 uid="uid://cr3h6d6dpfu3p"]
+[gd_scene load_steps=60 format=4 uid="uid://cr3h6d6dpfu3p"]
 
+[ext_resource type="Script" uid="uid://dimb5pc57xqxt" path="res://scenesandscripts/skthingy.gd" id="1_7n5jw"]
 [ext_resource type="Texture2D" uid="uid://wxtmycw7onh2" path="res://assets/prototypetiles.png" id="1_ag8n8"]
 [ext_resource type="PackedScene" uid="uid://congfvbp7vbpn" path="res://scenesandscripts/nyancatrainbow.tscn" id="2_rxcvj"]
 [ext_resource type="PackedScene" uid="uid://buatg5jkhgbgr" path="res://scenesandscripts/player.tscn" id="2_u4p16"]
@@ -265,8 +266,10 @@ size = Vector2(2168, 452)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" node_paths=PackedStringArray("followingnode")]
 motion_scale = Vector2(0, 0)
+script = ExtResource("1_7n5jw")
+followingnode = NodePath("../../player")
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
 offset_left = -171.0
