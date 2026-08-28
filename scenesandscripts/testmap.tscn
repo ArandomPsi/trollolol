@@ -604,6 +604,15 @@ freeable = false
 position = Vector2(-4.15146, -61.3176)
 shape = SubResource("RectangleShape2D_48o3t")
 
+[node name="Label" type="Label" parent="trolls"]
+offset_left = 15553.0
+offset_top = -5577.0
+offset_right = 15847.0
+offset_bottom = -5536.0
+theme_override_fonts/font = ExtResource("4_pmc34")
+theme_override_font_sizes/font_size = 30
+text = "Floating spike lol"
+
 [node name="grogus" type="Node2D" parent="."]
 
 [node name="grogu" parent="grogus" node_paths=PackedStringArray("platforms") instance=ExtResource("11_pwjfs")]
