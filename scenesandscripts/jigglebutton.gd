@@ -33,4 +33,7 @@ func _on_mouse_entered() -> void:
 
 
 func _on_pressed() -> void:
-	pass # Replace with function body.
+	if not alreadypressed:
+		alreadypressed = true
+	else:
+		get_tree().change_scene_to_file("res://scenesandscripts/testmap.tscn")
