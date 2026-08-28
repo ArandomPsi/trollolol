@@ -18,7 +18,7 @@ func tween():
 	tween.tween_property(self, "position:x", 1306.0, 0.6)
 	moving = false
 	for i in range($trail.get_children().size()):
-		tween.tween_property($trail.get_child($trail.get_children().size() - i - 1), "modulate:a", 0.0, 0.1)
+		tween.parallel().tween_property($trail.get_child($trail.get_children().size() - i - 1), "modulate:a", 0.0, 0.8).set_delay(i * 0.05)
 	tween.tween_property(self, "position:x", 154.0, 0.8)
 	await tween.finished
 	moving = true
