@@ -10,6 +10,8 @@ var camtweenpos : Vector2
 
 @export var respawnpos : Vector2
 
+var freemove : bool = false
+
 func _ready() -> void:
 	$sprite.visible = false
 	position = global.playerrespawnpos
@@ -55,7 +57,15 @@ func _physics_process(delta: float) -> void:
 	
 
 func controls():
-	
+	if Input.is_action_just_pressed("reset"):
+		set_process(false)
+		global.you_have_been_trolled = true
+		global.playerrespawnpos = Vector2(-1200,-200)
+		die()
+	if freemove:
+		var movedir = Input.get_vector("left", "right", "up", "down")
+		velocity += movedir * SPEED
+		return
 	var movedirx = Input.get_axis("left","right")
 	
 	velocity.x += movedirx * SPEED
@@ -65,11 +75,7 @@ func controls():
 		$sprite.scale.y = 0.6
 		$sprite.scale.x = 0.1
 	
-	if Input.is_action_just_pressed("reset"):
-		set_process(false)
-		global.you_have_been_trolled = true
-		global.playerrespawnpos = Vector2(-1200,-200)
-		die()
+	
 	
 	
 	

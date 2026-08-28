@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://drt2kjh8pucn8"]
+
+[ext_resource type="Script" uid="uid://dmugq2avbnvs6" path="res://scenesandscripts/nyancatboss.gd" id="1_t264l"]
+[ext_resource type="Texture2D" uid="uid://bab5vpsfctsjj" path="res://assets/nyancatrainbowpixel.svg" id="2_t264l"]
+[ext_resource type="Texture2D" uid="uid://sodjo4jv8imr" path="res://assets/nyancat.svg" id="3_unc7k"]
+
+[node name="nyancatboss" type="Node2D"]
+position = Vector2(154, 306)
+script = ExtResource("1_t264l")
+
+[node name="trail" type="Node2D" parent="."]
+position = Vector2(-158, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="trail"]
+position = Vector2(-46, -2)
+scale = Vector2(0.722, 0.567)
+texture = ExtResource("2_t264l")
+
+[node name="Sprite2D2" type="Sprite2D" parent="trail"]
+position = Vector2(-225, -2)
+scale = Vector2(0.722, 0.567)
+texture = ExtResource("2_t264l")
+
+[node name="Sprite2D3" type="Sprite2D" parent="trail"]
+position = Vector2(-405, -2)
+scale = Vector2(0.722, 0.567)
+texture = ExtResource("2_t264l")
+
+[node name="Sprite2D4" type="Sprite2D" parent="trail"]
+position = Vector2(-490, -2)
+scale = Vector2(0.722, 0.567)
+texture = ExtResource("2_t264l")
+
+[node name="Sprite2D5" type="Sprite2D" parent="trail"]
+position = Vector2(-672, -2)
+scale = Vector2(0.722, 0.567)
+texture = ExtResource("2_t264l")
+
+[node name="Sprite2D6" type="Sprite2D" parent="trail"]
+position = Vector2(-854, -2)
+scale = Vector2(0.722, 0.567)
+texture = ExtResource("2_t264l")
+
+[node name="Sprite2D7" type="Sprite2D" parent="trail"]
+position = Vector2(-1031, -2)
+scale = Vector2(0.722, 0.567)
+texture = ExtResource("2_t264l")
+
+[node name="Sprite2D8" type="Sprite2D" parent="trail"]
+position = Vector2(-1210, -2)
+scale = Vector2(0.722, 0.567)
+texture = ExtResource("2_t264l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_unc7k")

@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var fake : bool = false
+
 var t : float
 
 var checked : bool = false
@@ -24,7 +26,8 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	global.playerrespawnpos = position
+	if not fake:
+		global.playerrespawnpos = position
 	checked = true
 	scale.y = 0.2
 	scale.x = 1.5

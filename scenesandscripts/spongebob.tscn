@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpt1lyv3kiey"]
+
+[ext_resource type="Script" uid="uid://c1g0h2td8npfa" path="res://scenesandscripts/spongebob.gd" id="1_a0tmc"]
+[ext_resource type="Texture2D" uid="uid://denr1xm4d53ub" path="res://assets/spongebobmeme.svg" id="2_l64be"]
+[ext_resource type="FontFile" uid="uid://bgtddbwdprq2c" path="res://externaluploads/KineksRoundBold-MAlrP.otf" id="4_8ruq0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yby8i"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8fua"]
+radius = 176.23
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mriju"]
+size = Vector2(200, 387)
+
+[node name="spongebob" type="Node2D"]
+script = ExtResource("1_a0tmc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.485, 0.485)
+texture = ExtResource("2_l64be")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -176.0
+offset_top = -225.0
+offset_right = 176.0
+offset_bottom = -55.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yby8i")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = -16.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_8ruq0")
+theme_override_font_sizes/font_size = 30
+text = "Hey its me, its verity"
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_a8fua")
+
+[node name="platformmovearea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platformmovearea"]
+position = Vector2(336, -28.5)
+shape = SubResource("RectangleShape2D_mriju")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="platformmovearea" to="." method="_on_platformmovearea_body_entered"]

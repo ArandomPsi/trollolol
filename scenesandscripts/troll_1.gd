@@ -9,12 +9,18 @@ var active : bool = false
 
 func _ready() -> void:
 	if random:
-		active = randi_range(0, 1) == 1
+		active = randi_range(0, 100) >= 50
 		if not active and random:
 			if tethered_troll != null:
-				tethered_troll.get_node("CollisionShape2D").disabled = false
+				if tethered_troll is CollisionShape2D:
+					tethered_troll.disabled = false
+				else:
+					tethered_troll.get_node("CollisionShape2D").disabled = false
 		elif tethered_troll != null:
-			tethered_troll.get_node("CollisionShape2D").disabled = true
+			if tethered_troll is CollisionShape2D:
+					tethered_troll.disabled = true
+			else:
+				tethered_troll.get_node("CollisionShape2D").disabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
