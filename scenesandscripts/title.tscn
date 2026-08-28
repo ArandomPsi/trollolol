@@ -1,0 +1,179 @@
+[gd_scene load_steps=22 format=3 uid="uid://b1mx807wo6yya"]
+
+[ext_resource type="Texture2D" uid="uid://cy0yn43rdb6m2" path="res://externaluploads/dust.svg" id="1_awsk2"]
+[ext_resource type="Shader" uid="uid://d1x6mrjpwtxhv" path="res://assets/pixel.gdshader" id="2_m2u5h"]
+[ext_resource type="Shader" uid="uid://di7g0t8ac8w4b" path="res://scenesandscripts/jiggle.gdshader" id="2_tkyer"]
+[ext_resource type="Texture2D" uid="uid://c45hlpswp7lwk" path="res://assets/garuntiny.png" id="2_wcmch"]
+[ext_resource type="Texture2D" uid="uid://cwl3xk6sev8wq" path="res://assets/mrsun.png" id="4_tkyer"]
+[ext_resource type="Script" uid="uid://c1h35vqj3chsc" path="res://scenesandscripts/jigglebutton.gd" id="5_nnotk"]
+[ext_resource type="Texture2D" uid="uid://cvqwvn3xayb70" path="res://assets/play.png" id="6_oppuv"]
+[ext_resource type="Script" uid="uid://ri3gktp8tnx3" path="res://scenesandscripts/cam.gd" id="8_bpawm"]
+[ext_resource type="PackedScene" uid="uid://congfvbp7vbpn" path="res://scenesandscripts/nyancatrainbow.tscn" id="9_bgssw"]
+[ext_resource type="Texture2D" uid="uid://burjjcgjcyjm3" path="res://assets/usure?.png" id="10_2ld0e"]
+[ext_resource type="Script" uid="uid://b3i6tl5kme0jh" path="res://scenesandscripts/ushure.gd" id="11_yvny5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oppuv"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nnotk"]
+seamless = true
+noise = SubResource("FastNoiseLite_oppuv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpawm"]
+shader = ExtResource("2_tkyer")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 1.0
+shader_parameter/fps = 8.0
+shader_parameter/noise = SubResource("NoiseTexture2D_nnotk")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m2u5h"]
+
+[sub_resource type="Gradient" id="Gradient_bgssw"]
+offsets = PackedFloat32Array(0, 0.187838, 0.585135, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2ld0e"]
+gradient = SubResource("Gradient_bgssw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yvny5"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(600, 20, 1)
+angle_min = -720.0
+angle_max = 720.0
+spread = 0.0
+initial_velocity_min = 25.64
+initial_velocity_max = 25.64
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+color = Color(5, 5, 5, 0.461)
+color_ramp = SubResource("GradientTexture1D_2ld0e")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nnotk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oppuv"]
+shader = ExtResource("2_tkyer")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 1.0
+shader_parameter/fps = 8.0
+shader_parameter/noise = SubResource("NoiseTexture2D_nnotk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_coj24"]
+shader = ExtResource("2_m2u5h")
+shader_parameter/exposure = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 0.9
+shader_parameter/enable_pixelate = true
+shader_parameter/pixel_factor = 4.0
+shader_parameter/enable_posterize = true
+shader_parameter/color_levels = 16.0
+shader_parameter/dither_strength = 0.2
+shader_parameter/chrom_aberration = 0.0
+shader_parameter/vignette_strength = 0.0
+shader_parameter/grain_strength = 1.0
+shader_parameter/tint_color = Vector3(1, 1, 1)
+shader_parameter/tint_strength = 0.0
+shader_parameter/viewport_size_override = Vector2(0, 0)
+
+[node name="title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -263.0
+offset_right = 400.0
+offset_bottom = 263.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7, 0.965, 1, 1)
+
+[node name="Mrsun" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bpawm")
+position = Vector2(902, 323)
+scale = Vector2(0.783951, 0.783951)
+texture = ExtResource("4_tkyer")
+
+[node name="nyancatrainbow" parent="." instance=ExtResource("9_bgssw")]
+
+[node name="bottomfog2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_m2u5h")
+position = Vector2(541, 523)
+amount = 40
+texture = ExtResource("1_awsk2")
+lifetime = 6.0
+preprocess = 5.0
+speed_scale = 0.5
+visibility_rect = Rect2(-1000, -1000, 2000, 2000)
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_yvny5")
+
+[node name="Garuntiny" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bpawm")
+position = Vector2(376, 190)
+rotation = -0.292098
+scale = Vector2(0.626543, 0.626543)
+texture = ExtResource("2_wcmch")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 346.0
+offset_right = 1069.0
+offset_bottom = 545.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nnotk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_nnotk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nnotk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_nnotk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_nnotk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_nnotk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nnotk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_nnotk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nnotk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_nnotk")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nnotk")
+script = ExtResource("5_nnotk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Button"]
+material = SubResource("ShaderMaterial_oppuv")
+position = Vector2(215, 109)
+scale = Vector2(0.29321, 0.29321)
+texture = ExtResource("6_oppuv")
+
+[node name="postprocessing" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_coj24")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -322.0
+offset_top = -230.0
+offset_right = 322.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+position_smoothing_enabled = true
+script = ExtResource("8_bpawm")
+
+[node name="Usure" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(517, 360)
+texture = ExtResource("10_2ld0e")
+script = ExtResource("11_yvny5")
+
+[connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="Button" to="Usure" method="usuremessage"]

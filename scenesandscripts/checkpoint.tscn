@@ -7,7 +7,6 @@
 radius = 23.0
 
 [node name="checkpoint" type="Node2D"]
-position = Vector2(71, 43)
 script = ExtResource("1_g1jec")
 
 [node name="base" type="Sprite2D" parent="."]

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dhcllifjqeots" path="res://scenesandscripts/verity.tscn" id="5_dhh1a"]
 [ext_resource type="PackedScene" uid="uid://gyc1nvc72auj" path="res://scenesandscripts/troll2.tscn" id="6_clbil"]
 [ext_resource type="Script" uid="uid://oikbvllnauww" path="res://scenesandscripts/jumpscare.gd" id="6_qfnpu"]
-[ext_resource type="PackedScene" path="res://scenesandscripts/checkpoint.tscn" id="6_ty8wb"]
+[ext_resource type="PackedScene" uid="uid://bq6j8s4bw2p28" path="res://scenesandscripts/checkpoint.tscn" id="6_ty8wb"]
 [ext_resource type="Texture2D" uid="uid://cy0yn43rdb6m2" path="res://externaluploads/dust.svg" id="7_rxcvj"]
 [ext_resource type="PackedScene" uid="uid://cphv2e74n2u6p" path="res://scenesandscripts/doge.tscn" id="10_86kpa"]
 [ext_resource type="PackedScene" uid="uid://bg3vn44l5j750" path="res://scenesandscripts/pixelglasses.tscn" id="11_0usaj"]
@@ -21,7 +21,7 @@
 offsets = PackedFloat32Array(0, 0.187838, 0.585135, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_0usaj"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qfnpu"]
 gradient = SubResource("Gradient_86kpa")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rxcvj"]
@@ -37,7 +37,7 @@ gravity = Vector3(0, 0, 0)
 scale_min = 6.0
 scale_max = 10.0
 color = Color(5, 5, 5, 0.122)
-color_ramp = SubResource("GradientTexture1D_0usaj")
+color_ramp = SubResource("GradientTexture1D_qfnpu")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u4p16"]
 texture = ExtResource("1_ag8n8")
