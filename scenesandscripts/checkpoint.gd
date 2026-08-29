@@ -1,5 +1,7 @@
 extends Node2D
 
+signal checkpoint_checked()
+
 @export var fake : bool = false
 
 var t : float
@@ -28,6 +30,7 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if not fake:
 		global.playerrespawnpos = position
+		checkpoint_checked.emit()
 	checked = true
 	scale.y = 0.2
 	scale.x = 1.5

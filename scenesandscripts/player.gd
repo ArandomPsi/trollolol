@@ -61,6 +61,9 @@ func controls():
 		set_process(false)
 		global.you_have_been_trolled = true
 		global.playerrespawnpos = Vector2(-1200,-200)
+		global.ms = 0
+		global.s = 0
+		global.m = 0
 		die()
 
 	var movedirx = Input.get_axis("left","right")
@@ -131,7 +134,6 @@ func die():
 	tween.tween_method(settransshaderprop,1.05,0.0,0.4).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_interval(0.6)
 	await tween.finished
-	
 	get_tree().reload_current_scene()
 
 func settransshaderprop(val:float):
