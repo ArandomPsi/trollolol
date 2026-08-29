@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddp2apj3bh1ov"]
+
+[ext_resource type="Script" uid="uid://dsnuqevyvq1g7" path="res://scenesandscripts/sanic.gd" id="1_yx485"]
+[ext_resource type="Texture2D" uid="uid://gllxrgbjlsk5" path="res://assets/sanic.svg" id="2_gteur"]
+[ext_resource type="Texture2D" uid="uid://vhbe51ivkkf4" path="res://assets/cage.svg" id="3_18ro3"]
+[ext_resource type="FontFile" uid="uid://bgtddbwdprq2c" path="res://externaluploads/KineksRoundBold-MAlrP.otf" id="4_p7qy8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yby8i"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8fua"]
+radius = 176.23
+
+[node name="sanic" type="Node2D"]
+script = ExtResource("1_yx485")
+texts = PackedStringArray("u cme 2 sav meh! tank yooooo!", "com gib meh a smooch!")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.515, 0.515)
+texture = ExtResource("2_gteur")
+
+[node name="cage" type="Sprite2D" parent="."]
+position = Vector2(1, -9)
+scale = Vector2(0.62, 0.62)
+texture = ExtResource("3_18ro3")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -176.0
+offset_top = -293.0
+offset_right = 176.0
+offset_bottom = -123.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yby8i")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = -16.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_p7qy8")
+theme_override_font_sizes/font_size = 30
+text = "Hey its me, its verity"
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_a8fua")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

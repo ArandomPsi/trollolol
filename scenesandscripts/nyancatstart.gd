@@ -11,6 +11,8 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 		return
 	if "end" in name:
+		$"../player".SPEED = 120.0
+		$"../player".space = false
 		global.nyancatboss.die()
 		queue_free()
 		return

@@ -7,14 +7,17 @@
 size = Vector2(18, 16)
 
 [node name="troll1" type="Area2D"]
+use_parent_material = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_lltwh")
 
 [node name="spike" type="Node2D" parent="."]
+use_parent_material = true
 
 [node name="Sprite2D" type="Sprite2D" parent="spike"]
 texture_filter = 1
+use_parent_material = true
 scale = Vector2(0.580645, 1)
 texture = ExtResource("1_vpwki")
 region_enabled = true

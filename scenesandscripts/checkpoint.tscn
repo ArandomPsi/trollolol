@@ -10,13 +10,16 @@ radius = 23.0
 script = ExtResource("1_g1jec")
 
 [node name="base" type="Sprite2D" parent="."]
+use_parent_material = true
 texture = ExtResource("2_vyimf")
 
 [node name="base2" type="Sprite2D" parent="."]
+use_parent_material = true
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_vyimf")
 
 [node name="base3" type="Sprite2D" parent="."]
+use_parent_material = true
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_vyimf")
 

@@ -11,6 +11,7 @@ var camtweenpos : Vector2
 @export var respawnpos : Vector2
 
 var space : bool = false
+var nomove : bool = false
 
 func _ready() -> void:
 	$sprite.visible = false
@@ -65,7 +66,6 @@ func controls():
 		global.s = 0
 		global.m = 0
 		die()
-
 	var movedirx = Input.get_axis("left","right")
 	
 	velocity.x += movedirx * SPEED
@@ -77,7 +77,7 @@ func controls():
 		$sprite.scale.y = 0.6
 		$sprite.scale.x = 0.1
 	
-	
+	if nomove: velocity = Vector2.ZERO
 	
 	
 	
