@@ -26,7 +26,8 @@ func _process(delta: float) -> void:
 		$Sprite2D.scale.x = min($Sprite2D.scale.x, -0.18)
 	if active_platform and not platforms.is_empty():
 		for i in range(platforms.size()):
-			platforms[i].rotation_degrees += 1 * speed
+			var m = 1# if i % 2 == 0 else -1
+			platforms[i].rotation_degrees += m * speed
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
