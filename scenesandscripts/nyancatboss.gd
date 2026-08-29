@@ -5,9 +5,9 @@ var moving : bool = true
 var atktimer : float = 0.0
 
 func _process(delta: float) -> void:
-	global_position.x = global.playerpos.x - 576.0
+	global_position.x = lerp(global_position.x,global.playerpos.x - 450.0,0.15)
 	if tracking: 
-		global_position.y = global.playerpos.y
+		global_position.y = lerp(global_position.y,global.playerpos.y,0.1)
 		atktimer += delta
 	if moving:
 		for rainbow in $trail.get_children():

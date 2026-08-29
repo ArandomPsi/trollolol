@@ -24,7 +24,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	visible = position.distance_to(global.playerpos) < 2000
 
 
 func _on_body_entered(body: Node2D) -> void:

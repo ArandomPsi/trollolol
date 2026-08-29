@@ -1,5 +1,6 @@
-[gd_scene load_steps=61 format=4 uid="uid://cr3h6d6dpfu3p"]
+[gd_scene load_steps=63 format=4 uid="uid://cr3h6d6dpfu3p"]
 
+[ext_resource type="Script" uid="uid://dimb5pc57xqxt" path="res://scenesandscripts/skthingy.gd" id="1_7n5jw"]
 [ext_resource type="Texture2D" uid="uid://wxtmycw7onh2" path="res://assets/prototypetiles.png" id="1_ag8n8"]
 [ext_resource type="PackedScene" uid="uid://congfvbp7vbpn" path="res://scenesandscripts/nyancatrainbow.tscn" id="2_rxcvj"]
 [ext_resource type="PackedScene" uid="uid://buatg5jkhgbgr" path="res://scenesandscripts/player.tscn" id="2_u4p16"]
@@ -207,6 +208,9 @@ size = Vector2(1846, 1438)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjo1j"]
 size = Vector2(1135, 1438)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l22lo"]
+size = Vector2(7856, 422.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpenk"]
 size = Vector2(89, 170.092)
 
@@ -271,8 +275,10 @@ size = Vector2(2168, 452)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" node_paths=PackedStringArray("followingnode")]
 motion_scale = Vector2(0, 0)
+script = ExtResource("1_7n5jw")
+followingnode = NodePath("../../player")
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
 offset_left = -171.0
@@ -558,6 +564,17 @@ script = ExtResource("3_v6sm0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="camstuff/camarea9"]
 position = Vector2(294.5, -2267)
 shape = SubResource("RectangleShape2D_fjo1j")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="camarea10" type="Area2D" parent="camstuff"]
+position = Vector2(30902, -16117)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("3_v6sm0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camstuff/camarea10"]
+position = Vector2(0, 91.25)
+shape = SubResource("RectangleShape2D_l22lo")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="trolls" type="Node2D" parent="."]
