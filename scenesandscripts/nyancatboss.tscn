@@ -1,13 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://drt2kjh8pucn8"]
+[gd_scene load_steps=7 format=3 uid="uid://drt2kjh8pucn8"]
 
 [ext_resource type="Script" uid="uid://dmugq2avbnvs6" path="res://scenesandscripts/nyancatboss.gd" id="1_t264l"]
 [ext_resource type="Texture2D" uid="uid://bab5vpsfctsjj" path="res://assets/nyancatrainbowpixel.svg" id="2_t264l"]
 [ext_resource type="Texture2D" uid="uid://sodjo4jv8imr" path="res://assets/nyancat.svg" id="3_unc7k"]
+[ext_resource type="FontFile" uid="uid://bgtddbwdprq2c" path="res://externaluploads/KineksRoundBold-MAlrP.otf" id="4_dycl8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t264l"]
-size = Vector2(139, 82)
+size = Vector2(246, 146)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unc7k"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="nyancatboss" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_t264l")
 
 [node name="trail" type="Node2D" parent="."]
@@ -129,7 +138,51 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(18.5, -10)
+position = Vector2(1, -2)
 shape = SubResource("RectangleShape2D_t264l")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 28.0
+offset_top = -336.0
+offset_right = 497.0
+offset_bottom = -87.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_unc7k")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 15.0
+offset_right = -16.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_dycl8")
+theme_override_font_sizes/font_size = 35
+text = "Hey its me, its verity"
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="mark" type="Node2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+
+[node name="ColorRect7" type="ColorRect" parent="mark"]
+offset_left = -4.0
+offset_top = -116.0
+offset_right = 14.0
+offset_bottom = -97.0
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="mark"]
+offset_left = -4.0
+offset_top = -191.0
+offset_right = 14.0
+offset_bottom = -132.0
+color = Color(1, 0, 0, 1)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

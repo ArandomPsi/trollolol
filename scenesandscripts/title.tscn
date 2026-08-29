@@ -2,15 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://cy0yn43rdb6m2" path="res://externaluploads/dust.svg" id="1_awsk2"]
 [ext_resource type="Shader" uid="uid://d1x6mrjpwtxhv" path="res://assets/pixel.gdshader" id="2_m2u5h"]
-[ext_resource type="Shader" uid="uid://di7g0t8ac8w4b" path="res://scenesandscripts/jiggle.gdshader" id="2_tkyer"]
+[ext_resource type="Shader" path="res://scenesandscripts/jiggle.gdshader" id="2_tkyer"]
 [ext_resource type="Texture2D" uid="uid://c45hlpswp7lwk" path="res://assets/garuntiny.png" id="2_wcmch"]
 [ext_resource type="Texture2D" uid="uid://cwl3xk6sev8wq" path="res://assets/mrsun.png" id="4_tkyer"]
-[ext_resource type="Script" uid="uid://c1h35vqj3chsc" path="res://scenesandscripts/jigglebutton.gd" id="5_nnotk"]
+[ext_resource type="Script" path="res://scenesandscripts/jigglebutton.gd" id="5_nnotk"]
 [ext_resource type="Texture2D" uid="uid://cvqwvn3xayb70" path="res://assets/play.png" id="6_oppuv"]
-[ext_resource type="Script" uid="uid://ri3gktp8tnx3" path="res://scenesandscripts/cam.gd" id="8_bpawm"]
+[ext_resource type="Script" path="res://scenesandscripts/cam.gd" id="8_bpawm"]
 [ext_resource type="PackedScene" uid="uid://congfvbp7vbpn" path="res://scenesandscripts/nyancatrainbow.tscn" id="9_bgssw"]
 [ext_resource type="Texture2D" uid="uid://burjjcgjcyjm3" path="res://assets/usure.png" id="10_2ld0e"]
-[ext_resource type="Script" uid="uid://b3i6tl5kme0jh" path="res://scenesandscripts/ushure.gd" id="11_yvny5"]
+[ext_resource type="Script" path="res://scenesandscripts/ushure.gd" id="11_yvny5"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_oppuv"]
 

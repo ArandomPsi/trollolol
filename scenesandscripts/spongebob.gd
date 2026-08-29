@@ -6,6 +6,7 @@ extends Node2D
 var min_platform_pos : Array
 var active_platform : bool = false
 var time : float
+@export var reversed : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,7 +27,7 @@ func _process(delta: float) -> void:
 		$Sprite2D.scale.x = min($Sprite2D.scale.x, -0.18)
 	if active_platform and not platforms.is_empty():
 		for i in range(platforms.size()):
-			var m = 1# if i % 2 == 0 else -1
+			var m = 1 if i % 2 == 0 and not reversed else -1
 			platforms[i].rotation_degrees += m * speed
 
 

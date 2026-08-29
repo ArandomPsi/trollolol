@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 120.0
+var SPEED = 120.0
 
 var lastonfloor : bool = false
 
@@ -9,6 +9,8 @@ var camtweenzoom : float = 1
 var camtweenpos : Vector2
 
 @export var respawnpos : Vector2
+
+var space : bool = false
 
 func _ready() -> void:
 	$sprite.visible = false
@@ -67,6 +69,8 @@ func controls():
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = -800
+		if space:
+			velocity.y = -1200
 		$sprite.scale.y = 0.6
 		$sprite.scale.x = 0.1
 	
