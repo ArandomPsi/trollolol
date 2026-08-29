@@ -1,13 +1,18 @@
 extends Area2D
 
-
 func _on_body_entered(body: Node2D) -> void:
+	if global.nyancatboss_defeated: return
 	if "angry" in name:
 		global.nyancatboss.atktime /= 2
 		var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-		tween.tween_property($"../nyancatangry/flash/ColorRect", "modulate:a", 1.0, 0.2)
+		tween.tween_property($"../nyancatangry/flash/ColorRect", "modulate:a", 0.7, 0.2)
 		tween.tween_property($"../nyancatangry/flash/ColorRect", "modulate:a", 0.0, 0.2)
 		await tween.finished
+		queue_free()
+		return
+	if "end" in name:
+		global.nyancatboss.die()
+		queue_free()
 		return
 	$"../ParallaxBackground/ParallaxLayer".hide()
 	$"../ParallaxBackground/ParallaxLayer2".show()

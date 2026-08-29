@@ -78,3 +78,26 @@ func readyup():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	body.die()
+
+func die():
+	start = false
+	get_tree().paused = true
+	$Panel.visible = true
+	$Panel/Label.visible_ratio = 0.0
+	$Panel.modulate.a = 0.0
+	$Panel/Label.text = "~ Awwww u beat me.. I guess I'll always be a background character ~"
+	$Panel.position.y += 100
+	var tween = create_tween()
+	tween.tween_property($Panel,"position:y",-225.0,0.5).set_trans(Tween.TRANS_CUBIC)
+	tween.parallel().tween_property($Panel,"modulate:a",1.0,0.5)
+	tween.tween_property($Panel/Label,"visible_ratio",1.0,0.8)
+	tween.tween_interval(3)
+	tween.tween_property($Panel,"position:y",-225.0 + 100,0.5).set_trans(Tween.TRANS_CUBIC)
+	tween.parallel().tween_property($Panel,"modulate:a",0.0,0.5)
+	tween.tween_property(self, "modulate:a", 0.0, 0.8).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(self, "scale", Vector2(0.00001, 0.00001), 0.8).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(self, "rotation_degrees", 720.0, 0.8).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	get_tree().paused = false
+	global.nyancatboss_defeated = true
+	queue_free()
