@@ -17,7 +17,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	body.nomove = true
 	$Panel.visible = true
 	$Panel.modulate.a = 0.0
-	spawngary()
+	
 	for i in range(2):
 		$Panel/Label.visible_ratio = 0.0
 		$Panel/Label.text = texts[i]
@@ -33,12 +33,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if i == 0:
 			$cage.hide()
 		elif i == 1:
+			spawngary()
+			await get_tree().create_timer(2.5).timeout
 			get_tree().change_scene_to_file("res://scenesandscripts/endscreen.tscn")
 
 
 func spawngary():
-	await get_tree().create_timer(3.8).timeout
-	
 	var b = preload("res://scenesandscripts/garity.tscn").instantiate()
 	get_parent().add_child(b)
 	b.position = position

@@ -43,9 +43,13 @@ func _process(delta: float) -> void:
 	if atktimer >= atktime:
 		readyup()
 		atktimer = 0.0
+	if $mark.modulate.a == 1.0 or $path.modulate.a == 1.0:
+		$beep.stop()
+		$beep.play()
 
 func tween():
 	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	$attack.play()
 	tween.tween_property(self, "global_position:x", global_position.x + 1912.0, 0.6)
 	moving = false
 	for i in range($trail.get_children().size()):

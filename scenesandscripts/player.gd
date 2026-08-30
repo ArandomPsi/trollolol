@@ -70,10 +70,13 @@ func controls():
 		global.m = 0
 		die()
 	var movedirx = Input.get_axis("left","right")
-	
+	if movedirx != 0 and is_on_floor():
+		if not $walking.playing:
+			$walking.play()
 	velocity.x += movedirx * SPEED
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		$jumping.play()
 		velocity.y = -800
 		if space:
 			velocity.y = -1200

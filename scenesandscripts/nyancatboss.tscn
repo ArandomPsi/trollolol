@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://drt2kjh8pucn8"]
+[gd_scene load_steps=10 format=3 uid="uid://drt2kjh8pucn8"]
 
 [ext_resource type="Script" uid="uid://dmugq2avbnvs6" path="res://scenesandscripts/nyancatboss.gd" id="1_t264l"]
 [ext_resource type="Texture2D" uid="uid://bab5vpsfctsjj" path="res://assets/nyancatrainbowpixel.svg" id="2_t264l"]
 [ext_resource type="Texture2D" uid="uid://sodjo4jv8imr" path="res://assets/nyancat.svg" id="3_unc7k"]
 [ext_resource type="FontFile" uid="uid://bgtddbwdprq2c" path="res://externaluploads/KineksRoundBold-MAlrP.otf" id="4_dycl8"]
+[ext_resource type="AudioStream" uid="uid://e1xtllwxgnuw" path="res://assets/sounds/Nyan Cat! [Official].mp3" id="5_unc7k"]
+[ext_resource type="AudioStream" uid="uid://bb0rymd4nvc0k" path="res://assets/sounds/freesound_community-one_beep-99630.mp3" id="6_piom5"]
+[ext_resource type="AudioStream" uid="uid://vvx3aheitn0e" path="res://assets/sounds/r0t0r-8-bit-laser-151672.mp3" id="7_s1047"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t264l"]
 size = Vector2(246, 146)
@@ -184,5 +187,18 @@ offset_top = -191.0
 offset_right = 14.0
 offset_bottom = -132.0
 color = Color(1, 0, 0, 1)
+
+[node name="bosstheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_unc7k")
+volume_db = -14.054
+autoplay = true
+
+[node name="beep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_piom5")
+volume_db = 6.559
+
+[node name="attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_s1047")
+volume_db = 6.559
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

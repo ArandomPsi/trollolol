@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://buatg5jkhgbgr"]
+[gd_scene load_steps=35 format=3 uid="uid://buatg5jkhgbgr"]
 
 [ext_resource type="Script" uid="uid://xxu1hcfdi8l1" path="res://scenesandscripts/player.gd" id="1_0swia"]
 [ext_resource type="Texture2D" uid="uid://c2gi0ew3n1k88" path="res://assets/idle-5.svg" id="1_mdya1"]
@@ -17,7 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://b0oy5c810e1f4" path="res://assets/chibrun3.svg" id="15_r0ve5"]
 [ext_resource type="Texture2D" uid="uid://gxv6306i6r4e" path="res://assets/chibrun7.svg" id="16_0swia"]
 [ext_resource type="Shader" uid="uid://d1x6mrjpwtxhv" path="res://assets/pixel.gdshader" id="17_0swia"]
-[ext_resource type="Shader" uid="uid://ds077ntrocfgq" path="res://scenesandscripts/transition.gdshader" id="17_r0ve5"]
+[ext_resource type="Shader" path="res://scenesandscripts/transition.gdshader" id="17_r0ve5"]
+[ext_resource type="AudioStream" uid="uid://c6y1y4d33b227" path="res://assets/sounds/abdalrahman_bm-8-bit-gravel-footsteps-1-408582.mp3" id="19_vvjyh"]
+[ext_resource type="AudioStream" uid="uid://cbad48o372lbn" path="res://assets/sounds/freesound_community-sfx_jump_07-80241.mp3" id="20_oynlt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ucavg"]
 animations = [{
@@ -248,6 +250,12 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_vvjyh")
+
+[node name="walking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_vvjyh")
+
+[node name="jumping" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_oynlt")
 
 [connection signal="area_entered" from="camareadetect" to="." method="_on_camareadetect_area_entered"]
 [connection signal="body_entered" from="spikedetector" to="." method="_on_spikedetector_body_entered"]
