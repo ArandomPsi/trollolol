@@ -56,6 +56,9 @@ func _physics_process(delta: float) -> void:
 	
 	global.playerpos = global_position
 	
+	if position.y > 1000:
+		die()
+	
 
 func controls():
 	if Input.is_action_just_pressed("reset"):
